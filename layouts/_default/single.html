@@ -28,7 +28,7 @@
           <h4 class="see-also">{{ i18n "seeAlso" }}</h4>
           <ul>
           {{ range . }}
-            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            <li><a href="{{ .RelPermalink }}#disqus_thread">{{ .Title }}</a></li>
           {{ end }}
           </ul>
           {{ end }}
@@ -56,14 +56,11 @@
         {{ if ( eq .Type "post") }}
 
                 <div class="disqus-comments">
-                
-                  <div id="disqus_thread"></div>
-                
                   <script>
 
                     var disqus_config = function () {
                       this.page.title = {{ .Title }};
-                      this.page.url = "https://arthur.afarias.org" + {{ .RelPermalink }};
+                      this.page.url = "https://arthur.afarias.org" + {{ .RelPermalink }} + "#disqus_thread";
                       this.page.identifier = {{ .RelPermalink }};
                     };
 
@@ -72,13 +69,9 @@
                       s.src = 'https://arthur-afarias-org.disqus.com/embed.js';
                       s.setAttribute('data-timestamp', +new Date());
                       (d.head || d.body).appendChild(s);
-                      window.location.href = window.location.href + "#disqus_thread"
                     })();
 
                   </script>
-                
-                  <script id="dsq-count-scr" src="//arthur-afarias-org.disqus.com/count.js" async></script>
-                
                   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 
                 </div>

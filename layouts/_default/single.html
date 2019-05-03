@@ -54,28 +54,23 @@
       {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
         {{ if .Site.DisqusShortname }}
         {{ if ( eq .Type "post") }}
-
                 <div class="disqus-comments">
+                  <div id="disqus_thread"></div>
                   <script>
-
                     var disqus_config = function () {
                       this.page.title = {{ .Title }};
                       this.page.url = "https://arthur.afarias.org" + {{ .RelPermalink }} + "#disqus_thread";
                       this.page.identifier = {{ .RelPermalink }};
                     };
-
                     (function () {
                       var d = document, s = d.createElement('script');
                       s.src = 'https://arthur-afarias-org.disqus.com/embed.js';
                       s.setAttribute('data-timestamp', +new Date());
                       (d.head || d.body).appendChild(s);
                     })();
-
                   </script>
                   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                
                 </div>
-
         {{ end }}
         {{ end }}
 

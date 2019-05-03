@@ -7,9 +7,9 @@
     <div id="disqus_thread"></div>
     <script type="application/javascript">
         var disqus_config = function () {
-            { { with .Title } } this.page.title = '{{ . }}'; { { end } }
-            { { with .Permalink } } this.page.url = '{{ . | html  }}'; { { end } }
-            { { with .RelPermalink } } this.page.identifier = '{{ . }}'; { { end } }
+            {{ with .Title }} this.page.title = '{{ . }}'; {{ end }}
+            {{ with .Permalink }} this.page.url = '{{ . | html  }}'; {{ end }}
+            {{ with .RelPermalink }} this.page.identifier = '{{ . }}'; {{ end }}
         };
         (function () {
             if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {

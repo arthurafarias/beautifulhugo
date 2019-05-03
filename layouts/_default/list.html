@@ -10,7 +10,7 @@
         <div class="posts-list">
           {{ range .Paginator.Pages }}
             <article class="post-preview">
-              <a href="{{ .Permalink }}">
+              <a href="{{ .Permalink }}#disqus_thread">
                 <h2 class="post-title">{{ .Title }}</h2>
 
                 {{ if .Params.subtitle }}
@@ -26,7 +26,7 @@
               <div class="post-entry">
                 {{ if .Truncated }}
                   {{ .Summary }}
-                  <a href="{{ .Permalink }}" class="post-read-more">[{{ i18n "readMore" }}]</a>
+                  <a href="{{ .Permalink }}#disqus_thread" class="post-read-more">[{{ i18n "readMore" }}]</a>
                 {{ else }}
                   {{ .Content }}
                 {{ end }}

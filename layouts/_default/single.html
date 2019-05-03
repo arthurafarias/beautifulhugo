@@ -53,40 +53,10 @@
 
       {{ if (.Params.comments) | or (and (or (not (isset .Params "comments")) (eq .Params.comments nil)) (and .Site.Params.comments (ne .Type "page"))) }}
         {{ if .Site.DisqusShortname }}
-        {{ if ( eq .Type "post") }}
-                <div class="disqus-comments">
-                  <div id="disqus_thread"></div>
-                  <script>
-
-                    var disqus_config = function () {
-                      this.page.title = {{ .Title }};
-                      this.page.url = "https://arthur.afarias.org" + {{ .RelPermalink }} + "";
-                      this.page.identifier = {{ .RelPermalink }};
-                    };
-
-                    (function () {
-
-                      if (window.location.hostname == "localhost") return;
-
-                      var dsq = document.createElement('script');
-
-                      dsq.type = 'text/javascript';
-                      dsq.async = true;
-                      dsq.setAttribute('data-timestamp', +new Date());
-
-                      dsq.innerHTML = "console.log(disqus_config);"
-
-                      var disqus_shortname = '{{ .Site.DisqusShortname }}';
-                      dsq.src = '//' + disqus_shortname + ".disqus.com/embed.js";
-                      
-                      (document.head || document.body).appendChild(dsq);
-                    })();
-                  </script>
-                  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                </div>
+          <div class="disqus-comments">
+            {{ template "partials/disqus.html" . }}
+          </div>
         {{ end }}
-        {{ end }}
-
         {{ if .Site.Params.staticman }}
           <div class="staticman-comments">
             {{ partial "staticman-comments.html" . }}
